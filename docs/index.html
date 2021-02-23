@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Monotributo</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="monotributo.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="monotributo.js"></script>
+  </head>
+  <body></body>
+</html>
+
+<fieldset>
+  <h1 style="text-align: center">MONOTRIBUTO 2020</h1>
+  <h4>Calculá tu categoría y cuota mensual</h4>
+
+  <p>Ingresar actividad:</p>
+
+  <div class="select-option">
+    <select name="actividad" id="actividad">
+      <option value="2">---Elegir una opción---</option>
+      <option value="1">Locación o prestación de servicios</option>
+      <option value="0">Venta de cosas muebles</option>
+    </select>
+  </div>
+
+  <p>Ingresar situación laboral:</p>
+  <div class="select-option">
+    <select name="situacion_laboral" id="situacion_laboral">
+      <option value="2">---Elegir una opción---</option>
+      <option value="1">Actividad independiente</option>
+      <option value="0">Empleados en relación de dependencia</option>
+      <option value="0">Profesional (aporta a caja específica)</option>
+      <option value="0">Jubilado</option>
+    </select>
+  </div>
+
+  <p id="label_facturacion">Ingresar facturación anual:</p>
+  <div>
+    <input type="number" id="facturacion" value="0" />
+  </div>
+
+  <div>
+    <a class="icon document color button" type="submit" id="button_calculate" value="Calculate">
+      Calcular</a
+    >
+  </div>
+  <p class="result" id="text_cat"></p>
+  <p class="result" id="text_total"></p>
+  <p class="subresult" id="text_impuestos"></p>
+  <p class="subresult" id="text_obra_social"></p>
+  <p class="subresult" id="text_jubilacion"></p>
+</fieldset>
