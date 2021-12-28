@@ -3,23 +3,52 @@ y prestación de servicios, venta de cosas muebles y aportes jubilatorios,
 ordenados de menor a mayor categoría, para ser llamados dependiendo en cual
 estamos.
 */
-const arr_imp_servicios = [228.63, 440.49, 753.19, 1237.37, 2353.69, 3238.03, 4118.99, 9414.8];
-const arr_imp_venta = [
-  228.63, 440.49, 696.01, 1143.23, 1825.79, 2383.95, 2972.36, 7296.5, 11768.52, 13829.7, 15887.51,
-];
-const arr_aportes_jubilatorios = [
-  1008.72, 1109.59, 1220.56, 1342.61, 1476.88, 1624.56, 1787.01, 1965.71, 2162.29, 2378.53, 2616.36,
-];
-const arr_max_cat = [
-  370000.0, 550000.0, 770000.0, 1060000.0, 1400000.0, 1750000.0, 2100000.0, 2600000.0, 2910000.0,
-  3335000.0, 3700000.0,
-];
-const imp_obra_social = 1408.87;
+
+const CONSTANTS = {
+  S_2021: {
+    ARRAY_IMP_SERVICIOS: [228.63, 440.49, 753.19, 1237.37, 2353.69, 3238.03, 4118.99, 9414.8],
+    ARRAY_IMP_VENTA: [
+      228.63, 440.49, 696.01, 1143.23, 1825.79, 2383.95, 2972.36, 7296.5, 11768.52, 13829.7,
+      15887.51,
+    ],
+    ARRAY_APORTES_JUBILATORIS: [
+      1008.72, 1109.59, 1220.56, 1342.61, 1476.88, 1624.56, 1787.01, 1965.71, 2162.29, 2378.53,
+      2616.36,
+    ],
+    ARRAY_MAX_CAT: [
+      370000.0, 550000.0, 770000.0, 1060000.0, 1400000.0, 1750000.0, 2100000.0, 2600000.0,
+      2910000.0, 3335000.0, 3700000.0,
+    ],
+    IMPUESTO_OBRA_SOCIAL: 1408.87,
+  },
+  P_2022: {
+    ARRAY_IMP_SERVICIOS: [288.07, 555.02, 949.02, 1559.09, 2965.66, 4079.93, 5189.94, 11862.69],
+    ARRAY_IMP_VENTA: [
+      288.07, 555.02, 876.97, 1440.47, 2300.5, 3003.79, 3745.19, 9193.62, 14828.38, 17425.48,
+      20018.33,
+    ],
+    ARRAY_APORTES_JUBILATORIS: [
+      1270.99, 1389.09, 1537.91, 1691.69, 1860.87, 2046.95, 2251.64, 2476.8, 2724.49, 2996.96,
+      3296.62,
+    ],
+    ARRAY_MAX_CAT: [
+      466201.59, 693002.36, 970203.3, 1335604.55, 1764006.01, 2205007.51, 2646009.01, 3276011.15,
+      3666612.48, 4202114.31, 4662015.87,
+    ],
+    IMPUESTO_OBRA_SOCIAL: 1775.18,
+  },
+};
+
 const MAX_LOCACION = 7;
 const MAX_MUEBLES = 10;
 const A_ASCII = 65;
 
 $(document).ready(function () {
+  // month parsing
+  semester_idx = "SEGUNDO_2021";
+  $("#select_month").on("change", function () {
+    semester_idx = document.getElementById("select_month").value;
+  });
   $("#actividad").on("change", function () {
     var actividad = document.getElementById("actividad").value;
   });
@@ -35,32 +64,33 @@ $(document).ready(function () {
     var imp = 0;
     var total = 0;
 
-    var cat = "A"; //cat es la categoría de monotributo, empezando desde la A = 0
+    //cat es la categoría de monotributo, empezando desde la A = 0
+    var cat = "A";
 
     //abajo estan los maximos de cada categoría
-    if (n <= arr_max_cat[0]) {
+    if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[0]) {
       cat = "A";
-    } else if (n <= arr_max_cat[1]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[1]) {
       cat = "B";
-    } else if (n <= arr_max_cat[2]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[2]) {
       cat = "C";
-    } else if (n <= arr_max_cat[3]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[3]) {
       cat = "D";
-    } else if (n <= arr_max_cat[4]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[4]) {
       cat = "E";
-    } else if (n <= arr_max_cat[5]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[5]) {
       cat = "F";
-    } else if (n <= arr_max_cat[6]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[6]) {
       cat = "G";
-    } else if (n <= arr_max_cat[7]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[7]) {
       cat = "H";
-    } else if (n <= arr_max_cat[8]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[8]) {
       cat = "I";
-    } else if (n <= arr_max_cat[9]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[9]) {
       cat = "J";
-    } else if (n <= arr_max_cat[10]) {
+    } else if (n <= CONSTANTS[semester_idx].ARRAY_MAX_CAT[10]) {
       cat = "K";
-    } else if (n >= arr_max_cat[10]) {
+    } else if (n >= CONSTANTS[semester_idx].ARRAY_MAX_CAT[10]) {
       cat = "L";
     }
 
@@ -78,7 +108,7 @@ $(document).ready(function () {
         //categoría mayor a H
         error = 1;
       } else {
-        imp = arr_imp_servicios[i];
+        imp = CONSTANTS[semester_idx].ARRAY_IMP_SERVICIOS[i];
       }
     } else {
       //venta de cosas muebles
@@ -86,14 +116,14 @@ $(document).ready(function () {
         //categoría mayor a K
         error = 2;
       } else {
-        imp = arr_imp_venta[i];
+        imp = CONSTANTS[semester_idx].ARRAY_IMP_VENTA[i];
       }
     }
 
     if (situacion_laboral == 1) {
       //si es actividad independiente,debe pagar aportes
-      jubilacion = arr_aportes_jubilatorios[i];
-      obra_social = imp_obra_social;
+      jubilacion = CONSTANTS[semester_idx].ARRAY_APORTES_JUBILATORIS[i];
+      obra_social = CONSTANTS[semester_idx].IMPUESTO_OBRA_SOCIAL;
     }
     if (situacion_laboral == 2 || actividad == 2) {
       error = 4;
@@ -120,9 +150,13 @@ $(document).ready(function () {
       tobra.textContent = "";
       if (error == 1) {
         tjub.textContent =
-          "La facturación máxima para locación/prestación de servicios es $ 2.353.705,82";
+          "La facturación máxima para locación/prestación de servicios es $ ".concat(
+            CONSTANTS[semester_idx].ARRAY_MAX_CAT[7]
+          );
       } else if (error == 2) {
-        tjub.textContent = "La facturación máxima para venta de cosas muebles es $ 3.530.558,74";
+        tjub.textContent = "La facturación máxima para venta de cosas muebles es $ ".concat(
+          CONSTANTS[semester_idx].ARRAY_MAX_CAT[10]
+        );
       } else if (error == 3) {
         tcat.textContent = "Hubo un error";
         tjub.textContent =
