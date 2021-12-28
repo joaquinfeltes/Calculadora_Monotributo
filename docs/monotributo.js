@@ -3,49 +3,18 @@ y prestación de servicios, venta de cosas muebles y aportes jubilatorios,
 ordenados de menor a mayor categoría, para ser llamados dependiendo en cual
 estamos.
 */
-//CAMBIAR COMENTARIOS A INGLES
-//PONER LAS CONSTANTES EN MAYUSCULAS
-const arr_imp_servicios = [168.97, 325.54, 556.64, 914.47, 1739.48, 2393.05, 3044.12, 6957.96];
+const arr_imp_servicios = [228.63, 440.49, 753.19, 1237.37, 2353.69, 3238.03, 4118.99, 9414.8];
 const arr_imp_venta = [
-  168.97,
-  325.54,
-  514.38,
-  844.9,
-  1349.34,
-  1761.85,
-  2196.71,
-  5392.44,
-  8697.46,
-  10220.77,
-  11741.58,
+  228.63, 440.49, 696.01, 1143.23, 1825.79, 2383.95, 2972.36, 7296.5, 11768.52, 13829.7, 15887.51,
 ];
 const arr_aportes_jubilatorios = [
-  745.49,
-  820.04,
-  902.05,
-  992.25,
-  1091.48,
-  1200.62,
-  1320.68,
-  1452.75,
-  1598.03,
-  1757.84,
-  1933.61,
+  1008.72, 1109.59, 1220.56, 1342.61, 1476.88, 1624.56, 1787.01, 1965.71, 2162.29, 2378.53, 2616.36,
 ];
 const arr_max_cat = [
-  208739.25,
-  313108.87,
-  417478.51,
-  626217.78,
-  834957.0,
-  1043696.27,
-  1252435.53,
-  1739493.79,
-  2043905.21,
-  2348316.62,
-  2609240.69,
+  370000.0, 550000.0, 770000.0, 1060000.0, 1400000.0, 1750000.0, 2100000.0, 2600000.0, 2910000.0,
+  3335000.0, 3700000.0,
 ];
-const imp_obra_social = 1041.22;
+const imp_obra_social = 1408.87;
 const MAX_LOCACION = 7;
 const MAX_MUEBLES = 10;
 const A_ASCII = 65;
@@ -69,7 +38,6 @@ $(document).ready(function () {
     var cat = "A"; //cat es la categoría de monotributo, empezando desde la A = 0
 
     //abajo estan los maximos de cada categoría
-    //ESTO SE PUEDE HACER EN UN LOOP CON LAS CONSTANTES EN UN ARREGLO
     if (n <= arr_max_cat[0]) {
       cat = "A";
     } else if (n <= arr_max_cat[1]) {
@@ -152,9 +120,9 @@ $(document).ready(function () {
       tobra.textContent = "";
       if (error == 1) {
         tjub.textContent =
-          "La facturación máxima para locación/prestación de servicios es $ 1.739.493,79";
+          "La facturación máxima para locación/prestación de servicios es $ 2.353.705,82";
       } else if (error == 2) {
-        tjub.textContent = "La facturación máxima para venta de cosas muebles es $ 2.609.240,69";
+        tjub.textContent = "La facturación máxima para venta de cosas muebles es $ 3.530.558,74";
       } else if (error == 3) {
         tcat.textContent = "Hubo un error";
         tjub.textContent =
