@@ -96,7 +96,7 @@ const CONSTANTS = {
     },
     P_2024_OLD: {
         ARRAY_IMP_SERVICIOS: [
-            1047.86, 2018.89, 3452.09, 5671.23, 10787.67, 14840.88, 18878.58, 43150.91],
+            1047.86, 2018.89, 3452.09, 5671.23, 10787.67, 14840.88, 18878.58, 43150.91, 0, 0, 0],
         ARRAY_IMP_VENTA: [
             1047.86, 2018.89, 3190, 5239.75, 8368.13, 10926.38, 13623.24, 33442.08, 53938.71, 63385.73, 72817.31,
         ],
@@ -112,7 +112,7 @@ const CONSTANTS = {
         ]
       },
       P_2024: {
-            ARRAY_IMP_SERVICIOS: [1047.86, 2018.89, 3452.09, 5671.23, 10787.67, 14840.88, 18878.58, 43150.91],
+            ARRAY_IMP_SERVICIOS: [1047.86, 2018.89, 3452.09, 5671.23, 10787.67, 14840.88, 18878.58, 43150.91, 0, 0, 0],
             ARRAY_IMP_VENTA: [
             1047.86, 2018.89, 3190, 5239.75, 8368.13, 10926.38, 13623.24, 33442.08, 53938.71, 63385.73, 72817.31,
             ],
@@ -259,11 +259,11 @@ $(document).ready(function() {
             if (error == 1) {
                 tjub.textContent =
                     "La facturación máxima para locación/prestación de servicios es $ ".concat(
-                        CONSTANTS[semester_idx].ARRAY_MAX_CAT[7]
+                        CONSTANTS[semester_idx].ARRAY_MAX_CAT[MAX_LOCACION]
                     );
             } else if (error == 2) {
                 tjub.textContent = "La facturación máxima para venta de cosas muebles es $ ".concat(
-                    CONSTANTS[semester_idx].ARRAY_MAX_CAT[10]
+                    CONSTANTS[semester_idx].ARRAY_MAX_CAT[MAX_MUEBLES]
                 );
             } else if (error == 3) {
                 tcat.textContent = "Hubo un error";
