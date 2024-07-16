@@ -146,8 +146,8 @@ const CONSTANTS = {
 };
 
 
-
-const MAX_LOCACION = 7;
+// locacion de servicios ahora tiene las mismas categorias que venta cosas muebles
+const MAX_LOCACION = 10;
 const MAX_MUEBLES = 10;
 const A_ASCII = 65;
 
@@ -213,7 +213,7 @@ $(document).ready(function() {
         if (actividad == 1) {
             //locación o prestación de servicios
             if (i > MAX_LOCACION) {
-                //categoría mayor a H
+                //categoría mayor a K
                 error = 1;
             } else {
                 imp = CONSTANTS[semester_idx].ARRAY_IMP_SERVICIOS[i];
